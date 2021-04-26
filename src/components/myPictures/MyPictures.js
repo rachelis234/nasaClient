@@ -40,18 +40,17 @@ export default connect(
             <Carousel.Item
               key={i}
               interval={picture.media_type === "image" ? 2000 : 10000000}
-              className="h-100"
+              className="carousel1"
             >
               {picture.media_type === "image" ? (
                 <img
-                  className="d-block w-100 p-3 h-50"
+                  className="d-block p-3 carousel1"
                   src={picture.url}
                   alt="error"
                 />
               ) : (
                 <iframe
-                  className="d-block  w-100 p-3 h-50"
-                  
+                  className="d-block  w-100 p-3 h-50 carousel1"
                   src={picture.url}
                 ></iframe>
                 // <div className="video-section">

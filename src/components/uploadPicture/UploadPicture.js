@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import pictureService from "../../services/pictures.service";
 import "./UploadPicture.css";
 
-
 function mapStateToProps(state) {
   // debugger;
   return {
@@ -15,7 +14,7 @@ export default connect(
   mapStateToProps,
   null
 )(function ImageUpload(props) {
-  const {user}=props;
+  const { user } = props;
   const [file, setFile] = useState("");
   const [imagePreviewUrl, setImagePreviewUrl] = useState("");
 
@@ -26,7 +25,7 @@ export default connect(
     const formData = new FormData();
     formData.append("file", file, file.name);
     // console.log(formData.get("file"));
-    pictureService.uploadePicture(formData,user.token);
+    pictureService.uploadePicture(formData, user.token);
     // .then(()=>{
     //     console.log("success")
     // }).catch(err=>console.log("err in my upload"+err))
@@ -59,10 +58,13 @@ export default connect(
   }
 
   return (
-    <div className="previewComponent container justufy-content-center w-100">
-      <div className="imgPreview row justify-content-center w-50">
-        {$imagePreview}
+    <div className="previewComponent container">
+      <div className="row pt-5">
+        <div className="col-3"></div>
+        <div className="imgPreview">{$imagePreview}</div>
+        <div className="col-3"></div>
       </div>
+
       {/* <div id="mainApp"></div> <div className="centerText"></div> */}
       <form
         className="row justify-content-center"
@@ -84,4 +86,4 @@ export default connect(
       </form>
     </div>
   );
-})
+});

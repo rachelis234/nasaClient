@@ -39,7 +39,7 @@ export default connect(
     }
   }, []);
   return (
-    <div className="d-block justify-content-center align-items-center h-75  mx-auto">
+    <div className="d-block justify-content-center align-items-center wrapper">
       <h2 className="m-3">
         Here is the Astronomy Image that will make your day{" "}
       </h2>
@@ -47,7 +47,7 @@ export default connect(
 
       {Object.keys(pictureOfDay).length > 0 ? (
         <div className="d-block justify-content-center align-items-center h-75">
-          <div style="height:100px" className="h-100"
+          <div className="h-100 "
             // className="d-flex flex-column justify-content-center align-items-center  w-75 h-100 p-4"
             style={{ border: "2px solid black", borderRadius: "10px" }}
           >

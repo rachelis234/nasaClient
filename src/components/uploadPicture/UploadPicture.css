@@ -9,6 +9,8 @@
   cursor: pointer
 }
 .imgPreview{
+    height:65vh!important;
+    width:50vw!important;
   text-align: center;
   border-left: 1px solid gray;
   border-right: 1px solid gray;
@@ -37,3 +39,6 @@
 /* .centerText{
   text-align: center;
   width: 500px} */
+  /* .previewComponent{
+      text-align: center
+  } */
