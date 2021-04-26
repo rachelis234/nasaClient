@@ -16,23 +16,19 @@ const loginSchema = Yup.object().shape({
     .email("wrong format"),
   password: Yup.string().required()
 });
+
 function mapStateToProps(state) {
-  // debugger;
   return {
     user: state.userReducer.user
-    // pictureOfDay:state.pictureReducer.pictureOfDay
   };
 }
+
 const mapDispatchToProps = dispatch => ({
   setUser: user => {
-    // console.log(user);
     dispatch(actions.setUser(user));
   }
-
-  // setPictureOfDay: () => {
-  //   dispatch(actions.getPictureOfDayFromDb());
-  // }
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
@@ -40,9 +36,9 @@ export default connect(
   const { user, setUser } = props;
   const [errorMsg, setErrorMsg] = useState(0);
   const history = useHistory();
+  
   const handleSubmit = async values => {
     const validUser = await userService.getUser(values);
-    // console.log("validate", validUser);
     if (validUser !== null) {
       await setUser({ user: validUser.user, token: validUser.token });
       setErrorMsg(0);

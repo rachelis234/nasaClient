@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { actions } from "../../Redux/Store/actions";
-import pictureService from "../../services/pictures.service";
 import { Button, Collapse } from "react-bootstrap";
+import pictureService from "../../services/pictures.service";
 import "./ShowPictureOfDay.css";
 
 function mapStateToProps(state) {
@@ -12,28 +10,19 @@ function mapStateToProps(state) {
     pictureOfDay: state.picturesReducer.pictureOfDay
   };
 }
-const mapDispatchToProps = dispatch => ({
-  // setPictureOfDay: picture => {
-  //   dispatch(actions.setPictureOfDay(picture));
-  // }
-});
+
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(function ShowPictureOfDay(props) {
   const { user } = props;
-  const [pictureOfDay, setPictureOfDay] = useState({});
-  // const history = useHistory();
+  const [pictureOfDay,setPictureOfDay] = useState({});
   const [open, setOpen] = useState(false);
 
   useEffect(async () => {
     const picture = await pictureService.getPictureOfTheDay(user.token);
-    console.log(picture);
     if (picture !== null) {
-      // await setPictureOfDay(picture);
-      // console.log(pictureOfDay);
       await setPictureOfDay(picture);
-      console.log(pictureOfDay);
     } else {
       //TODO
     }

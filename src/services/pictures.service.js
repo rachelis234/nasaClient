@@ -9,7 +9,6 @@ class PictureService extends Component {
   }
   getAllPictures = async (token) => {
     try {
-      // debugger;
       const response = await axios.get(`${this.url}getAllPictures`, {
         headers: { Authorization: token }
       });
@@ -20,17 +19,8 @@ class PictureService extends Component {
       return null;
     }
   };
-  //   createUser = async userBody => {
-  //     try {
-  //       const response = axios.post(`${this.url}/createUser`, this.userBody);
-  //       return response.data;
-  //     } catch (err) {
-  //       return err;
-  //     }
-  //   };
   getPictureOfTheDay = async token => {
     try {
-      // debugger;
       const response = await axios.get(`${this.url}getPictureOfDay`, {
         headers: { Authorization: token }
       });
@@ -43,11 +33,7 @@ class PictureService extends Component {
   };
   uploadePicture = async (formData,token) => {
     try {
-      // debugger;
       console.log(formData);
-      // const response = axios.post(`${this.url}uploadPicture`, {
-      //   headers: { Authorization: token, "content-type": "multipart/form-data" }
-      // });
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -64,15 +50,5 @@ class PictureService extends Component {
       throw err;
     }
   };
-
-  // getColor = async (colorId) => {
-  //   try {
-  //     const response = await axios.get(`this.url${colorId}`);
-  //     //   console.log(response.data.tasks);
-  //     return response.data;
-  //   } catch (err) {
-  //     return err;
-  //   }
-  // };
 }
 export default new PictureService();

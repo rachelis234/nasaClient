@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import { connect } from "react-redux";
 import { actions } from "../../Redux/Store/actions";
+
 import MyPictures from "../myPictures/MyPictures";
 import ImageUpload from "../uploadPicture/UploadPicture";
-
 import ShowPictureOfDay from "../showPictureOfDay/ShowPictureOfDay";
 import ResetPassword from "../resetPassword/ResetPassword";
 import SignIn from "../signIn/SignIn";
@@ -27,7 +27,7 @@ export default connect(
   mapDispatchToProps
 )(function Nvbar(props) {
   const {user,setUser}=props;
-  const logOut=()=>{debugger
+  const logOut=()=>{
     setUser(null);
   }
   return (

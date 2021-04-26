@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 // import { Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { actions } from "../../Redux/Store/actions";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { actions } from "../../Redux/Store/actions";
-import './SignUp.css';
 
+import { useHistory } from "react-router-dom";
+import "./SignUp.css";
 import userService from "../../services/user.service";
 
 const registerSchema = Yup.object().shape({
@@ -18,33 +18,23 @@ const registerSchema = Yup.object().shape({
     .email("wrong format"),
   password: Yup.string().required()
 });
-function mapStateToProps(state) {
-  // debugger;
-  return {
-    user: state.userReducer.user
-    // pictureOfDay:state.pictureReducer.pictureOfDay
-  };
-}
+
 const mapDispatchToProps = dispatch => ({
   setUser: user => {
-    // console.log(user);
     dispatch(actions.setUser(user));
   }
-
-  // setPictureOfDay: () => {
-  //   dispatch(actions.getPictureOfDayFromDb());
-  // }
 });
+
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(function SignUp(props) {
-  const { user, setUser } = props;
+  const { setUser } = props;
 
   const [errorMsg, setErrorMsg] = useState(0);
   const history = useHistory();
+  
   const handleSubmit = async values => {
-
     const newUser = await userService.createUser(values);
     if (newUser !== null) {
       await setUser({ user: newUser.user, token: newUser.token });
@@ -132,7 +122,6 @@ export default connect(
               <button className="btn btn-dark w-100 p-2 " type="submit">
                 Sign up
               </button>{" "}
-              
             </div>
           </Form>
         </div>

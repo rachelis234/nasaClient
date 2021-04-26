@@ -4,10 +4,8 @@ import pictureService from "../../services/pictures.service";
 import "./UploadPicture.css";
 
 function mapStateToProps(state) {
-  // debugger;
   return {
     user: state.userReducer.user
-    // pictureOfDay:state.pictureReducer.pictureOfDay
   };
 }
 export default connect(
@@ -20,16 +18,10 @@ export default connect(
 
   const _handleSubmit = e => {
     e.preventDefault();
-    // TODO: do something with -> this.state.file
-    // console.log("handle uploading-", file);
     const formData = new FormData();
     formData.append("file", file, file.name);
-    // console.log(formData.get("file"));
     pictureService.uploadePicture(formData, user.token);
-    // .then(()=>{
-    //     console.log("success")
-    // }).catch(err=>console.log("err in my upload"+err))
-  };
+    };
 
   const _handleImageChange = e => {
     e.preventDefault();
@@ -45,7 +37,6 @@ export default connect(
     reader.readAsDataURL(file);
   };
 
-  // let { imagePreviewUrl } = imagePreviewUrl;
   let $imagePreview = null;
   if (imagePreviewUrl) {
     $imagePreview = <img src={imagePreviewUrl} />;
@@ -65,7 +56,6 @@ export default connect(
         <div className="col-3"></div>
       </div>
 
-      {/* <div id="mainApp"></div> <div className="centerText"></div> */}
       <form
         className="row justify-content-center"
         onSubmit={e => _handleSubmit(e)}
